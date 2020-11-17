@@ -9,11 +9,11 @@ class Verascli < Formula
     inreplace "bin/verascli", /^CLIENT_HOME=/, "export VERASCLI_OCLIF_CLIENT_HOME=#{lib/"client"}\nCLIENT_HOME="
     libexec.install Dir["*"]
     bin.install_symlink libexec/"bin/verascli"
-    libexec/"node_modules/vtex".install_symlink libexec
+    system "ln", "-s", libexec, libexec/"node_modules/vtex"
   end
 
   def caveats; <<~EOS
-    Testing CLI POC
+    VTEX installed!
   EOS
   end
 
