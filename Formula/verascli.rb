@@ -2,7 +2,7 @@ class Verascli < Formula
   desc "CLI tool for creating and managing VTEX apps"
   homepage "https://github.com/VerasThiago/verascli"
   url "https://github.com/VerasThiago/verascli/releases/download/v2.119.1/verascli-v2.119.1-darwin-x64.tar.gz"
-  sha256 "90181447004c59703ae11c0e861e3893b8d74177872b78a927bdc9689801aa2a"
+  sha256 "85b799e19426f5891a1a2cca620660c4107df4e4bad33d781b0ff63eb5ab0d0d"
   license "MIT"
 
   def install
