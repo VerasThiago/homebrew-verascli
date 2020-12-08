@@ -1,11 +1,11 @@
-name: ci
+name: bump-brew
 
 on:
-  push:
+  repository_dispatch:
+    types: [bump-brew]
       
 jobs:
-  prepack:
-      name: bump-formula
+  bump-brew:
       runs-on: macos-latest
       steps: 
       - name: Checkout repo
