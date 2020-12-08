@@ -11,7 +11,7 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v2
       - name: Bump Version
-        run: bash test.sh
+        run: bash bump-version.sh
       - name: Commit changes
         uses: EndBug/add-and-commit@v4
         with:
