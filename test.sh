@@ -18,3 +18,5 @@ replace-line-in-file "Formula/verascli.rb" 5 "  version \"$version\""
 replace-line-in-file "Formula/verascli.rb" 6 "  sha256 \"$sha256\""
 
 cat "Formula/verascli.rb"
+
+git status
