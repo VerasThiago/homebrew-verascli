@@ -10,8 +10,7 @@ class Verascli < Formula
     inreplace "bin/verascli", /^CLIENT_HOME=/, "export VERASCLI_OCLIF_CLIENT_HOME=#{lib/"client"}\nCLIENT_HOME="
     libexec.install Dir["*"]
     bin.install_symlink libexec/"bin/verascli"
-    File.symlink(libexec, libexec/"node_modules/vtex")
-    # system "ln", "-s", libexec, libexec/"node_modules/vtex"
+    system "ln", "-s", libexec, libexec/"node_modules/vtex"
   end
 
   def caveats
