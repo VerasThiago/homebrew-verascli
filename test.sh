@@ -25,7 +25,6 @@ replace-line-in-file "$filePath" 4 "$url"
 replace-line-in-file "$filePath" 5 "$version"
 replace-line-in-file "$filePath" 6 "$sha256"
 
-
 fileUrlData=$(sed -n 4p "$filePath")
 fileVersionData=$(sed -n 5p "$filePath")
 fileSha256Data=$(sed -n 6p "$filePath")
@@ -36,4 +35,3 @@ then
 else
     echo "Failed to bump version."
 fi
-# if [ 2 -eq 4 ]
