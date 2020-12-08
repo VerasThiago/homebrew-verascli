@@ -16,3 +16,5 @@ sha256=$(echo $allData | jq --raw-output '.sha256gz')
 replace-line-in-file "Formula/verascli.rb" 4 "  url \"$url\""
 replace-line-in-file "Formula/verascli.rb" 5 "  version \"$version\""
 replace-line-in-file "Formula/verascli.rb" 6 "  sha256 \"$sha256\""
+
+cat "Formula/verascli.rb"
