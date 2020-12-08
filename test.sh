@@ -7,16 +7,33 @@ function replace-line-in-file () {
     sed -i '' "${line_num}s/.*/$replacement_escaped/" "$file"
 }
 
+filePath="Formula/verascli.rb"
+
+echo "Downloading latest release..."
 allData=$(curl -sk https://vtex-toolbelt-test.s3.us-east-2.amazonaws.com/darwin-x64)
 
 version=$(echo $allData | jq --raw-output '.version')
 url=$(echo $allData | jq --raw-output '.gz')
 sha256=$(echo $allData | jq --raw-output '.sha256gz')
 
-replace-line-in-file "Formula/verascli.rb" 4 "  url \"$url\""
-replace-line-in-file "Formula/verascli.rb" 5 "  version \"$version\""
-replace-line-in-file "Formula/verascli.rb" 6 "  sha256 \"$sha256\""
+url="  url \"$url\""
+version="  version \"$version\""
+sha256="  sha256 \"$sha256\""
 
-cat "Formula/verascli.rb"
+echo "Bumping brew version..."
+replace-line-in-file "$filePath" 4 "$url"
+replace-line-in-file "$filePath" 5 "$version"
+replace-line-in-file "$filePath" 6 "$sha256"
 
-git status
+
+fileUrlData=$(sed -n 4p "$filePath")
+fileVersionData=$(sed -n 5p "$filePath")
+fileSha256Data=$(sed -n 6p "$filePath")
+
+if [ "$fileUrlData" = "$url" ] && [ "$fileVersionData" = "$version" ] && [ "$fileSha256Data" = "$sha256" ]
+then
+    echo "Version bumped successfully!"
+else
+    echo "Failed to bump version."
+fi
+# if [ 2 -eq 4 ]
